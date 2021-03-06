@@ -20,6 +20,7 @@ Route::get('/shop','ShopController@index')->name('shop.index');
 Route::get('/products/{product}','ShopController@show')->name('product.show');
 Route::get('/cart','CartController@index')->name('cart.index');
 Route::post('/cart','CartController@store')->name('cart.store');
+Route::delete('/cart/{product}','CartController@destroy')->name('cart.destroy');
 
 
 

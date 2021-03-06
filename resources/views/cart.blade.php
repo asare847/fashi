@@ -20,8 +20,24 @@
     <!-- Shopping Cart Section Begin -->
     <section class="shopping-cart spad">
         <div class="container">
+            @if (session()->has('success_message'))
+            <div class="alert alert-success">
+                {{ session()->get('success_message') }}
+            </div>
+        @endif
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div class="row">
                 <div class="col-lg-12">
+                    @if(Cart::count()>0)
+                    <h3>{{Cart::count() }}  Item(s) selected</h3>
                     <div class="cart-table">
                         <table>
                             <thead>
@@ -35,12 +51,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (Cart::content() as $item)
                                 <tr>
-                                    <td class="cart-pic first-row"><img src="img/cart-page/product-1.jpg" alt=""></td>
+                                    <td class="cart-pic first-row"><img src="{{asset('img/products/'.$item->model->slug.'.webp')}}" alt=""></td>
                                     <td class="cart-title first-row">
-                                        <h5>Pure Pineapple</h5>
+                                        <h5>{{ $item->model->name }}</h5>
                                     </td>
-                                    <td class="p-price first-row">$60.00</td>
+                                    <td class="p-price first-row">{{ $item->model->presentPrice() }}</td>
                                     <td class="qua-col first-row">
                                         <div class="quantity">
                                             <div class="pro-qty">
@@ -49,40 +66,18 @@
                                         </div>
                                     </td>
                                     <td class="total-price first-row">$60.00</td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    
+                                    <td class="close-td first-row">
+                                        <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit"><i class="ti-close"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-2.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>American lobster</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-pic"><img src="img/cart-page/product-3.jpg" alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>Guangzhou sweater</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-                                </tr>
+                                @endforeach
+                         
+                      
                             </tbody>
                         </table>
                     </div>
@@ -102,15 +97,20 @@
                         </div>
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
-                                <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
+                                  <ul>
+                                    <li class="subtotal">Subtotal <span>{{Cart::subtotal()}}</span></li>
+                                    <li class="subtotal">Tax (3%)<span>{{ Cart::tax() }}</span></li>
+                                    <li class="cart-total">Total <span>{{Cart::total()}}</span></li>
                                 </ul>
+                                
                                 <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @else
+                <h3 class="">No Items in cart</h3>
+                @endif
             </div>
         </div>
     </section>
