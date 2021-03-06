@@ -71,7 +71,7 @@
                                         <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit"><i class="ti-close"></i></button>
+                                            <i class="ti-close"  onclick='this.parentNode.submit(); return false';></i>
                                         </form>
                                     </td>
                                 </tr>
@@ -98,9 +98,9 @@
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                   <ul>
-                                    <li class="subtotal">Subtotal <span>{{Cart::subtotal()}}</span></li>
-                                    <li class="subtotal">Tax (3%)<span>{{ Cart::tax() }}</span></li>
-                                    <li class="cart-total">Total <span>{{Cart::total()}}</span></li>
+                                    <li class="subtotal">Subtotal <span>{{presentPrice(Cart::subtotal())}}</span></li>
+                                    <li class="subtotal">Tax (2%)<span>{{ presentPrice(Cart::tax()) }}</span></li>
+                                    <li class="cart-total">Total <span>{{presentPrice(Cart::total())}}</span></li>
                                 </ul>
                                 
                                 <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>

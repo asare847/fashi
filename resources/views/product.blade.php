@@ -217,7 +217,7 @@
                                         <input type="hidden" name="id" value="{{ $product->id }}">
                                         <input type="hidden" name="name" value="{{ $product->name }}">
                                         <input type="hidden" name="price" value="{{ $product->price }}">
-                                    <button type="submit" class="primary-btn pd-cart ">Add To Cart</button>
+                                      <a href='#' onclick='this.parentNode.submit(); return false;' class="primary-btn pd-cart " >Add To Cart</a>
                                     </form>
                                     
                                 </div>
@@ -402,5 +402,7 @@
     <!-- Product Shop Section End -->
 
   @include('partials.might-like');
+  
 
   @endsection
+  

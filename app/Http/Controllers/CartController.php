@@ -94,4 +94,13 @@ class CartController extends Controller
         Cart::remove($id);
         return back()->with('success_message', 'Item has been removed!');
     }
+
+    public function switchToSaveForLater($id)
+    {
+        $item = Cart::get($id);
+        Cart::remove($id);
+        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
+        ->associate('App\Product');
+        return back()->with('success_message', 'Item has been saved');
+    }
 }
