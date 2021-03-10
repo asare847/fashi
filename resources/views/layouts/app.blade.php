@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{  asset('css/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{  asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{  asset('css/style.css')}}" type="text/css">
+    @yield('extra-css')
 </head>
 
 <body>
@@ -29,14 +30,15 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+    
     @include('partials.header')
-
+     
      @yield('content')
-
+    
     @include('partials.footer')
-
+    @yield('extra-js')
     <!-- Js Plugins -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{  asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/jquery-ui.min.js')}}"></script>

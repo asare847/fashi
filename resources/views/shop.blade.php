@@ -220,5 +220,10 @@
             </div>
         </div>
     </section>
+    <script>
+       document.getElementById("yourLinkId").onclick = function() {
+        document.getElementById("yourFormId").submit();
+}
+    </script>
     <!-- Product Shop Section End -->
 @endsection

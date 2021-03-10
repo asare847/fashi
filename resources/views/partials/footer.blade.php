@@ -1,3 +1,5 @@
+
+
 <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
         <div class="container">
@@ -80,9 +82,12 @@
                     <div class="newslatter-item">
                         <h5>Join Our Newsletter Now</h5>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter Your Mail">
-                            <button type="button">Subscribe</button>
+                        <form  class="subscribe-form" id="subscribe" >
+                            
+                            <input type="text" placeholder="Enter Your Mail" id="emailField" >
+                            <button type="submit" id="submitButton">Subscribe</button>
+                
+                            <div class="invalid-feedback">provide valid email</div>
                         </form>
                     </div>
                 </div>
@@ -105,4 +110,38 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
+
+    @section('extra-js')
+    <!-- Js Plugins -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Footer Section End -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.1/umd/popper.min.js" integrity="sha512-g2PN+aYR0KupTVwea5Ppqw4bxWLLypWdd+h7E0ydT8zF+/Y2Qpk8Y1SnzVw6ZCVJPrgB/91s3VfhVhP7Y4+ucw==" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+           
+        $('#subscribe').on('submit',function(e){
+            e.preventDefault();
+            $('#submitButton').prop('disabled',true);
+            $.ajax({
+                type: 'POST',
+                url:'/subscription',
+                data:$(this).serialize(),
+                success: function(data){
+                    if(data.success){ 
+                        $('.subscribe-section').html('<div class="alert alert-success" role="alert">subscription successful </div>');
+                     }
+                },
+    
+                error: function(data){
+                    var errorFromServer = JSON.parse(data.responseText);
+                    $('#emailField').addClass('is-invalid');
+                    var invalidFeedbackBox = $('.invalid-feedback');
+                    invalidFeedbackBox.html(errorFromServer.message);
+                    invalidFeedbackBox.removeClass('d-none');
+                    $('#submitButton').prop('disabled',false);
+                }
+            });
+        });
+        });
+    </script>
+    @endsection

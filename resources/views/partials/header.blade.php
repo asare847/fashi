@@ -59,7 +59,7 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="{{ route('cart.index') }}">
                                     <i class="icon_bag_alt"></i>
                                     @if(Cart::instance('default')->count() > 0)
                                     <span>{{ Cart::instance('default')->count() }}</span>
@@ -71,34 +71,40 @@
                                     <div class="select-items">
                                         <table>
                                             <tbody>
+                                                @foreach (Cart::content() as $item)
                                                 <tr>
-                                                    <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
+                                                    <td class="si-pic"><img src="{{asset('img/products/'.$item->model->slug.'.webp')}}" alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6></h6>
+                                                            <p>{{ presentPrice($item->model->price)}}</p>
+                                                            <h6>{{ $item->model->name }}</h6>
                                                         </div>
                                                     </td>
+                                                    
                                                     <td class="si-close">
-                                                        <i class="ti-close"></i>
+                                                        <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('DELETE') }}
+                                                            <i class="ti-close"  onclick='this.parentNode.submit(); return false';></i>
+                                                        </form>
                                                     </td>
                                                 </tr>
-                                              
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <h5>{{presentPrice(Cart::subtotal())}}</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                        <a href="{{ route('cart.index') }}" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{ route('checkout.index') }}" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
                                 @endif
                             </li>
-                            <li class="cart-price">$150.00</li>
+                            <li class="cart-price">{{presentPrice(Cart::total())}}</li>
                         </ul>
                     </div>
                 </div>

@@ -22,9 +22,8 @@ Route::get('/cart','CartController@index')->name('cart.index');
 Route::post('/cart','CartController@store')->name('cart.store');
 Route::delete('/cart/{product}','CartController@destroy')->name('cart.destroy');
 Route::post('/cart/switchToSaveForLater/{product}', 'CartController@switchToSaveForLater')->name('cart.switchToSaveForLater');
+Route::get('/checkout','CheckoutController@index')->name('checkout.index');
+Route::post('/checkout','CheckoutController@store')->name('checkout.store');
+Route::get('/thankyou','ConfirmationController@index')->name('confirmation.index');
 
-
-
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+Route::post('/subscription','SubscribeController@store')->name('subscribe.store');

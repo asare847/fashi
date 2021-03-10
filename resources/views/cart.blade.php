@@ -103,7 +103,7 @@
                                     <li class="cart-total">Total <span>{{presentPrice(Cart::total())}}</span></li>
                                 </ul>
                                 
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="{{ route('checkout.index') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
                             </div>
                         </div>
                     </div>
