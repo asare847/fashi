@@ -6,20 +6,23 @@
 <script src="https://js.stripe.com/v2/"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <style> 
-    <style>
+    
    .StripeElement{ 
     height: 46px;
-    border: 2px solid #ebebeb; 
+    border: 2px solid black; 
     margin-bottom: 25px;
     padding-left: 15px;
     font-family: "FontAwesome";
    }
+   #card-errors{
+       color:#fa755a;
+   }
+</style>
 
-</style>
-</style>
 @endsection
 
 @section('content')
+
 
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
@@ -35,7 +38,6 @@
             </div>
         </div>
     </div>
-    <!-- Breadcrumb Section Begin -->
     @if (session()->has('success_message'))
     <div class="spacer"></div>
     <div class="alert alert-success">
@@ -96,7 +98,9 @@
                                 <label for="phone">Phone<span>*</span></label>
                                 <input type="text" id="phone"  name="phone" value="{{ old('phone') }}" required>
                             </div>
-                            
+
+                            <div class="col-lg-12" id="card-errors" role="alert"></div>
+
                                 <div  id="card-element" class="col-lg-12">
                                 <!-- a Stripe Element will be inserted here. -->
                                  </div>
@@ -104,6 +108,7 @@
                         
                         </div>
                     </div>
+                    <div id="card-errors" role="alert"></div>
                     <div class="col-lg-6">
                         <div class="checkout-content">
                             <input type="text" placeholder="Enter Your Coupon Code">
@@ -137,6 +142,7 @@
                                         </label>
                                     </div>
                                 </div>
+                                
                                 <div class="order-btn">
                                     <button type="submit" class="site-btn place-btn" id="complete-order" >Place Order</button>
                                 </div>
@@ -170,7 +176,7 @@ var card = elements.create('card', {
       'color': '#C1C7CD',
     },
     'invalid': {
-      'color': 'red',
+      'color': '#fa755a',
     },
   }
 });
@@ -215,11 +221,7 @@ card.addEventListener('change', function(event) {
             });
 
 
-         
-
-
-
-                function stripeTokenHandler(token) {
+             function stripeTokenHandler(token) {
               // Insert the token ID into the form so it gets submitted to the server
                         var form = document.getElementById('payment-form');
                         var hiddenInput = document.createElement('input');

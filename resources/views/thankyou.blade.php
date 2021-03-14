@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home</a>
                         <span>Contact</span>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             </div>
             
                 <div class="col-lg-12 text-center">
-                    <button  class="site-btn text-center">Back to website</button>
+                    <a href="{{ route('home.index') }}"><button  class="site-btn text-center">Back to website</button></a>
                 </div>
                 
             </div>

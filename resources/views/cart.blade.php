@@ -60,8 +60,8 @@
                                     <td class="p-price first-row">{{ $item->model->presentPrice() }}</td>
                                     <td class="qua-col first-row">
                                         <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
+                                            <div class="pro-qty" data-id="{{ $item->rowId }}">
+                                                <input type="text" value="1"  field='quantity' >
                                             </div>
                                         </div>
                                     </td>
@@ -118,4 +118,8 @@
 
    @include('partials.might-like')
 
+ 
+
   @endsection
+    
+  

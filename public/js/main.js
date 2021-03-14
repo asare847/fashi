@@ -231,20 +231,38 @@
     var proQty = $('.pro-qty');
 	proQty.prepend('<span class="dec qtybtn">-</span>');
 	proQty.append('<span class="inc qtybtn">+</span>');
-	proQty.on('click', '.qtybtn', function () {
+	proQty.on('click', '.qtybtn', function (element) {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();
 		if ($button.hasClass('inc')) {
 			var newVal = parseFloat(oldValue) + 1;
+            console.log(newVal);
 		} else {
 			// Don't allow decrementing below zero
 			if (oldValue > 0) {
 				var newVal = parseFloat(oldValue) - 1;
+                console.log(newVal);
 			} else {
 				newVal = 0;
 			}
 		}
 		$button.parent().find('input').val(newVal);
+            const id = 
+            
+            element.getAttribute('data-id');
+
+        axios.patch('/cart/${id}', 
+         {
+            quantity:this.value
+         })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
 	});
 
 })(jQuery);
