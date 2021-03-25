@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Product extends Model
 {
@@ -11,10 +12,18 @@ class Product extends Model
     
 
       protected $fillable = [];
-     public function path(){
+
+
+     public function path()
+     {
+        
         return "products/".$this->slug;
-    }
+     }
    
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 
       public function presentPrice()
     {

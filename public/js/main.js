@@ -223,7 +223,7 @@
 		}
 	});
 
-    $('.product-pic-zoom').zoom();
+    //$('.product-pic-zoom').zoom();
     
     /*-------------------
 		Quantity change
@@ -232,37 +232,47 @@
 	proQty.prepend('<span class="dec qtybtn">-</span>');
 	proQty.append('<span class="inc qtybtn">+</span>');
 	proQty.on('click', '.qtybtn', function (element) {
-		var $button = $(this);
-		var oldValue = $button.parent().find('input').val();
+		var $button = $(this),
+		 oldValue = $button.parent().find('input').val(),
+         parentDiv = $button.parent();
 		if ($button.hasClass('inc')) {
 			var newVal = parseFloat(oldValue) + 1;
-            console.log(newVal);
+           
 		} else {
 			// Don't allow decrementing below zero
 			if (oldValue > 0) {
 				var newVal = parseFloat(oldValue) - 1;
-                console.log(newVal);
+                
 			} else {
 				newVal = 0;
 			}
 		}
-		$button.parent().find('input').val(newVal);
-            const id = 
-            
-            element.getAttribute('data-id');
+        
+		 $button.parent().find('input').val(newVal);
+        
+          const id = parentDiv.attr('data-id');
 
-        axios.patch('/cart/${id}', 
-         {
-            quantity:this.value
-         })
-          .then(function (response) {
-            console.log(response);
+          //
+          
+         
+          console.log(`${id}`);
+           $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              url:`/cart/${id}`,
+              method:'PATCH',
+              data:{quantity:newVal},
+              success:function (data) {
+                $button.parent().find('input').innerHTML = newVal;
+               // window.location.href = '/cart';
+                
+            },
+            error: function () {
+                console.log('error handing here');
+            }
           })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-
+          
 	});
 
 })(jQuery);

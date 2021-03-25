@@ -207,11 +207,13 @@
                                         <label for="xl-size">xs</label>
                                     </div>
                                 </div>
+                                
                                 <div class="quantity">
-                                    <div class="pro-qty">
+                                   {{-- 
+                                    <div class="pro-qty" >
                                         <input type="text" value="1">
-                                    </div>
-                                   
+                                    </div> --}}
+                                  
                                     <form action="{{ route('cart.store', $product) }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="id" value="{{ $product->id }}">
@@ -221,6 +223,7 @@
                                     </form>
                                     
                                 </div>
+                                
                                 <ul class="pd-tags">
                                     <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases</li>
                                     <li><span>TAGS</span>: Clothing, T-shirt, Woman</li>

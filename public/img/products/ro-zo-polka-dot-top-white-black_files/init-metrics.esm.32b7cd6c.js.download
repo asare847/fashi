@@ -1,0 +1,1 @@
+if("undefined"!=typeof window&&"performance"in window&&"PerformanceObserver"in window){const e=()=>import("./metrics.esm.86ef442b.js").then(({init:e,exposeMetrics:i})=>{e();const n=window.__jlMetrics.exposeMetrics;window.__jlMetrics.exposeMetrics=()=>n()||i()});window.requestIdleCallback?window.requestIdleCallback(e):e()}

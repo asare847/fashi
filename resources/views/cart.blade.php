@@ -1,6 +1,10 @@
-@extends('layouts.app')
-@section('content')
 
+@extends('layouts.app')
+@section('extra-css')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+@section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
@@ -60,12 +64,12 @@
                                     <td class="p-price first-row">{{ $item->model->presentPrice() }}</td>
                                     <td class="qua-col first-row">
                                         <div class="quantity">
-                                            <div class="pro-qty" data-id="{{ $item->rowId }}">
-                                                <input type="text" value="1"  field='quantity' >
+                                            <div class="pro-qty" data-id="{{$item->rowId }}"  >
+                                                <input type="text" value='1'>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="total-price first-row">$60.00</td>
+                                    <td class="total-price first-row">{{ presentPrice($item->subtotal) }}</td>
                                     
                                     <td class="close-td first-row">
                                         <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
