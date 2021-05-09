@@ -1,5 +1,4 @@
-Laravel Ecommerce Example
-Code for YouTube video series: https://www.youtube.com/watch?v=o5PWIuDTgxg&list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR
+
 
 Website Demo: https://laravelecommerceexample.ca. The demo has limited permissions. Install locally for full access.
 
