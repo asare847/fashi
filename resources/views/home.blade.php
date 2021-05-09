@@ -48,7 +48,7 @@
             @foreach($categories as $category)
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="{{asset('img/categories/'.$category->name.'.jpg')}}" alt="">
+                        <img src="{{asset('img/categories/'.$category->slug.'.jpg')}}" alt="">
                         <div class="inner-text">
                             <a href="{{ route('shop.index', ['category' => $category->slug]) }}"><h4>{{$category->name}}</h4></a>
                         </div>
