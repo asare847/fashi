@@ -48,7 +48,7 @@
             @foreach($categories as $category)
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="{{asset('img/categories/'.$category->name.'.JPG')}}" alt="">
+                        <img src="{{asset('img/categories/'.$category->name.'.jpg')}}" alt="">
                         <div class="inner-text">
                             <a href="{{ route('shop.index', ['category' => $category->slug]) }}"><h4>{{$category->name}}</h4></a>
                         </div>
@@ -70,27 +70,17 @@
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
                         <h2>Women’s</h2>
-                        <a href="#">Discover More</a>
+                       
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-1">
-                    <!-- <div class="filter-control">
-                        <ul>
-                            <li class="active">Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
-                            <li>Accessories</li>
-                        </ul>
-                    </div> -->
+                   
                     <div class="product-slider owl-carousel">
                         @foreach ($products as $product)
                         <div class="product-item">
                             <div class="pi-pic">
                                 <img src="{{asset('img/products/'.$product->slug.'.webp')}}" alt="">
                                 <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
                                 <ul>
                                     <li class="w-icon active"><a href="{{route('shop.index')}}"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="{{ $product->path() }}">+ Quick View</a></li>
@@ -115,45 +105,7 @@
             </div>
         </div>
     </section>
-    <!-- Women Banner Section End -->
-
-     <!-- Deal Of The Week Section Begin-->
-  <!--   <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
-        <div class="container">
-            <div class="col-lg-6 text-center">
-                <div class="section-title">
-                    <h2>Deal Of The Week</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br /> do ipsum dolor sit amet,
-                        consectetur adipisicing elit </p>
-                    <div class="product-price">
-                        $35.00
-                        <span>/ HanBag</span>
-                    </div>
-                </div>
-                <div class="countdown-timer" id="countdown">
-                    <div class="cd-item">
-                        <span>56</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>12</span>
-                        <p>Hrs</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>40</span>
-                        <p>Mins</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>52</span>
-                        <p>Secs</p>
-                    </div>
-                </div>
-                <a href="#" class="primary-btn">Shop Now</a>
-            </div>
-        </div>
-    </section> --> 
-    <!-- Deal Of The Week Section End -->
-     <!-- Man Banner Section Begin -->
+    
     <section class="man-banner spad">
         <div class="container-fluid">
             <div class="row">
@@ -174,9 +126,6 @@
                             <div class="pi-pic">
                                 <img src="{{asset('img/products/'.$product->slug.'.webp')}}" alt="">
                                 <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
                                 <ul>
                                     <li class="w-icon active"><a href="{{route('shop.index')}}"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="#">+ Quick View</a></li>

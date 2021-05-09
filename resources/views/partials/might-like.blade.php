@@ -17,9 +17,6 @@
                     <div class="pi-pic">
                         <img src="{{asset('img/products/'.$product->slug.'.webp')}}" alt="">
                         <div class="sale">Sale</div>
-                        <div class="icon">
-                            <i class="icon_heart_alt"></i>
-                        </div>
                         <form id="store-submit" action="{{ route('cart.store') }}" method="POST">
                             <ul>
                                 {{ csrf_field() }}
@@ -40,7 +37,6 @@
                         </a>
                         <div class="product-price">
                             {{ $product->presentPrice() }}
-                            <span>$35.00</span>
                         </div>
                     </div>
                 </div>
