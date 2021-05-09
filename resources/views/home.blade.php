@@ -48,7 +48,7 @@
             @foreach($categories as $category)
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="{{asset('img/categories/'.$category->name.'.jpg')}}" alt="">
+                        <img src="{{asset('img/categories/'.$category->name.'.JPG')}}" alt="">
                         <div class="inner-text">
                             <a href="{{ route('shop.index', ['category' => $category->slug]) }}"><h4>{{$category->name}}</h4></a>
                         </div>
@@ -233,8 +233,7 @@
                                     {{date('l j.M.Y h:i:s a ',strtotime($post->created_at))}}
                                 </div>
                                 <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
+                                   
                                 </div>
                             </div>
                             <a href="{{route('posts.show',$post->id)}}">
