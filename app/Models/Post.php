@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use HasFactory;
-    const EXCERPT_LENGTH = 250;
+    const EXCERPT_LENGTH = 100;
 	
 
     protected $table = 'posts';
