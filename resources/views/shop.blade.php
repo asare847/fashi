@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home</a>
-                        <span>Shop</span>
+                        <span>{{$categoryName}}</span>
                     </div>
                 </div>
             </div>
@@ -22,16 +22,19 @@
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
+
+
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
+                        @foreach($categories as $category) 
+                            <li><a href="{{ route('shop.index', ['category' => $category->slug]) }}">{{$category->name}}</a></li>
+                         @endforeach
                         </ul>
+                    
                     </div>
-                    <div class="filter-widget">
+                  <!--   <div class="filter-widget">
                         <h4 class="fw-title">Brand</h4>
                         <div class="fw-brand-check">
                             <div class="bc-item">
@@ -63,8 +66,8 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="filter-widget">
+                    </div>-->
+                   <!--  <div class="filter-widget">
                         <h4 class="fw-title">Price</h4>
                         <div class="filter-range-wrap">
                             <div class="range-slider">
@@ -81,8 +84,8 @@
                             </div>
                         </div>
                         <a href="#" class="filter-btn">Filter</a>
-                    </div>
-                    <div class="filter-widget">
+                    </div> -->
+                  <!--   <div class="filter-widget">
                         <h4 class="fw-title">Color</h4>
                         <div class="fw-color-choose">
                             <div class="cs-item">
@@ -143,8 +146,9 @@
                             <a href="#">Men's hats</a>
                             <a href="#">Backpack</a>
                         </div>
-                    </div>
+                    </div> --> 
                 </div>
+
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
                         <div class="row">
@@ -165,27 +169,22 @@
                     </div>
                     <div class="product-list">
                         <div class="row">
-                            @foreach ($products as $product) 
+                            @php
+                            $wishitem = Cart::instance('wishlist')->content()->pluck('id');
+                            @endphp
+                            @forelse ($products as $product) 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="{{asset('img/products/'.$product->slug.'.webp')}}" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <form action="{{ route('cart.switchToSaveForLater', $product->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                <i   onclick='this.parentNode.submit(); return false;' class="icon_heart_alt"></i>
-                                            </form>
-                                            
-                                        </div>
-                                        
-                                        <form id="store-submit" action="{{ route('cart.store', $product) }}" method="POST">
+
+                                   <form id="store-submit" action="{{ route('cart.store', $product) }}" method="POST">
                                             <ul>
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                                                <li class="w-icon active"><a  href="javascript:;" onclick="document.getElementById('store-submit').submit()"><i class="icon_bag_alt"></i></a></li>
+                                                 <li class="w-icon active"><a  href="{{$product->path()}}"><i class="icon_bag_alt"></i></a></li> 
                                             
                                             <li class="quick-view"><a href="{{ $product->path() }}">+ Quick View</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
@@ -205,21 +204,22 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+
+                            @empty
+                                    <div>No items found</div>
+                            @endforelse
 
                             
                         </div>
+
                     </div>
-                    <div class="loading-more">
-                        <i class="icon_loading"></i>
-                        <a href="#">
-                            Loading More
-                        </a>
-                    </div>
+                 
                 </div>
             </div>
         </div>
+      
     </section>
+
     <script>
       
     </script>

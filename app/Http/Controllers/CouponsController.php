@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\Category;
-class HomeController extends Controller
+use App\Models\Coupon;
+use App\Jobs\UpdateCoupon;
+use Gloudemans\Shoppingcart\Facades\Cart;
+class CouponsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::inRandomOrder()->take(8)->get();
-        $categories = Category::all();
-        return  view('home')->with(
-            [
-                'products'=> $products,
-                'categories'=>$categories
-            ]
-       );
+        //
     }
 
     /**
@@ -42,7 +36,16 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $coupon = Coupon::where('code', $request->coupon_code)->first();
+        if (!$coupon) {
+            return back()->withErrors('Invalid coupon code. Please try again.');
+        }
+        session()->put('coupon',[
+            'name'=> $coupon->code,
+            'discount'=> $coupon->discount(Cart::subtotal())
+        ]);
+
+        return redirect()->route('cart.index')->with('success_message','Coupons has been applied');
     }
 
     /**
@@ -82,11 +85,13 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        session()->forget('coupon');
+
+        return back()->with('success_message', 'Coupon has been removed.');
     }
 }

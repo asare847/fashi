@@ -3,20 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
-class SubscribeController extends Controller
+use App\Models\Contact;
+class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        return view('contact.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +18,7 @@ class SubscribeController extends Controller
      */
     public function create()
     {
-        return view('subscription');
+        return view('contact.index');
     }
 
     /**
@@ -35,12 +29,14 @@ class SubscribeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'email'=> 'required|email'
+        $attribute = $request->validate([
+            'name' => 'required',
+            'email'=> 'required',
+            'message'=>'required'
         ]);
 
-        Storage::append('email.txt',$request->input('email'));
-        return response()->json(['success'=>true]);
+        Contact::create($attribute);
+        return redirect('/contact');
     }
 
     /**

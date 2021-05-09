@@ -2158,15 +2158,16 @@ ol {
 	top: 0;
 }
 
-.product-details .pd-rating {
-	margin-bottom: 10px;
+.icon .icon_heart_alt{
+	color: red;
+	font-size: 32px;
 }
+ .icon_heart_alt:hover {
+	color:#ff7007;
 
-.product-details .pd-rating i {
-	font-size: 12px;
-	display: inline-block;
-	color: #FAC451;
-	margin-right: -3px;
+}
+.fill-heart{
+	background-color: red;
 }
 
 .product-details .pd-rating span {
@@ -4309,4 +4310,5 @@ ol {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+	
 }

@@ -12,7 +12,7 @@
                             <h1>Black friday</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore</p>
-                            <a href="{{route('shop.index')}}" class="primary-btn">Shop Now</a>
+                            <a href="#" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                     <div class="off-card">
@@ -28,7 +28,7 @@
                             <h1>Black friday</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore</p>
-                            <a href="{{route('shop.index')}}" class="primary-btn">Shop Now</a>
+                            <a href="#" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                     <div class="off-card">
@@ -44,24 +44,34 @@
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-    <!--  Fetching store categories  -->
-            @foreach($categories as $category)
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="{{asset('img/categories/'.$category->name.'.jpg')}}" alt="">
+                        <img src="img/banner-1.jpg" alt="">
                         <div class="inner-text">
-                            <a href="{{ route('shop.index', ['category' => $category->slug]) }}"><h4>{{$category->name}}</h4></a>
+                            <h4>Men’s</h4>
                         </div>
                     </div>
-         
                 </div>
-             @endforeach
-                
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/banner-2.jpg" alt="">
+                        <div class="inner-text">
+                            <h4>Women’s</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-banner">
+                        <img src="img/banner-3.jpg" alt="">
+                        <div class="inner-text">
+                            <h4>Kid’s</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- Banner Section End -->
-
 
     <!-- Women Banner Section Begin -->
     <section class="women-banner spad">
@@ -74,14 +84,14 @@
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-1">
-                    <!-- <div class="filter-control">
+                    <div class="filter-control">
                         <ul>
                             <li class="active">Clothings</li>
                             <li>HandBag</li>
                             <li>Shoes</li>
                             <li>Accessories</li>
                         </ul>
-                    </div> -->
+                    </div>
                     <div class="product-slider owl-carousel">
                         @foreach ($products as $product)
                         <div class="product-item">
@@ -92,7 +102,7 @@
                                     <i class="icon_heart_alt"></i>
                                 </div>
                                 <ul>
-                                    <li class="w-icon active"><a href="{{route('shop.index')}}"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="{{ $product->path() }}">+ Quick View</a></li>
                                     <li class="w-icon"><a href="{{ $product->path() }}"><i class="fa fa-random"></i></a></li>
                                 </ul>
@@ -117,8 +127,8 @@
     </section>
     <!-- Women Banner Section End -->
 
-     <!-- Deal Of The Week Section Begin-->
-  <!--   <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+    <!-- Deal Of The Week Section Begin-->
+    <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
@@ -151,9 +161,10 @@
                 <a href="#" class="primary-btn">Shop Now</a>
             </div>
         </div>
-    </section> --> 
+    </section>
     <!-- Deal Of The Week Section End -->
-     <!-- Man Banner Section Begin -->
+
+    <!-- Man Banner Section Begin -->
     <section class="man-banner spad">
         <div class="container-fluid">
             <div class="row">
@@ -178,7 +189,7 @@
                                     <i class="icon_heart_alt"></i>
                                 </div>
                                 <ul>
-                                    <li class="w-icon active"><a href="{{route('shop.index')}}"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="#">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>
@@ -209,7 +220,46 @@
     </section>
     <!-- Man Banner Section End -->
 
- 
+    <!-- Instagram Section Begin -->
+    <div class="instagram-photo">
+        <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+        <div class="insta-item set-bg" data-setbg="img/insta-2.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+        <div class="insta-item set-bg" data-setbg="img/insta-3.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+        <div class="insta-item set-bg" data-setbg="img/insta-4.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+        <div class="insta-item set-bg" data-setbg="img/insta-5.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+        <div class="insta-item set-bg" data-setbg="img/insta-6.jpg">
+            <div class="inside-text">
+                <i class="ti-instagram"></i>
+                <h5><a href="#">colorlib_Collection</a></h5>
+            </div>
+        </div>
+    </div>
+    <!-- Instagram Section End -->
 
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog spad">

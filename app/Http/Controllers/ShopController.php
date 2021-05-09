@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Validator;
+
 
 class ShopController extends Controller
 {
@@ -15,38 +18,29 @@ class ShopController extends Controller
     public function index()
 
     {
-        $products = Product::inRandomOrder()->take(12)->get();
+         
+           $categories = Category::all();
+           if (request()->category) {
+            $products = Product::with('categories')->whereHas('categories', function ($query) {
+                $query->where('slug', request()->category);
+            })->get();
+            
+            $categoryName = optional($categories->where('slug', request()->category)->first())->name;
+        } else {
+            $products = Product::inRandomOrder()->take(12)->paginate(9);
+             
+            $categoryName ="Shop"; 
+        }
         
-        return  view('shop')->with('products',$products);
+        
+        return  view('shop')->with([
+            'products'=>$products,
+            'categories'=>$categories,
+             'categoryName'=>$categoryName]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-   /**
-     * Display the specified resource.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
+   
+  
     public function show($slug)
     {
         $product = Product::where('slug',$slug)->firstOrFail();
@@ -54,40 +48,19 @@ class ShopController extends Controller
         return view('product')->with(['product'=>$product,'mightAlsoLike'=>$mightAlsoLike]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+   public function addWishList(Request $request)
+   {
+          Cart::instance('wishlist')->add($request->id, $request->name, 1, $request->price)->associate('App\Models\Product');
 
-    /**
-     * 
-     * 
+   }
+  
 
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+   
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public  function search(Request $request)
     {
-        //
+        return view('search-results');
     }
+    
 }

@@ -60,10 +60,10 @@
                     <div class="footer-widget">
                         <h5>Information</h5>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Serivius</a></li>
+                            <li><a href="{{route('shop.index')}}">Shop</a></li>
+                            <li><a href="{{route('checkout.index')}}">Checkout</a></li>
+                            <li><a href="{{route('contact.create')}}">Contact</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -71,15 +71,15 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">My Account</a></li>
+                            
                             <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="{{route('cart.index')}}">Shopping Cart</a></li>
+                            <li><a href="{{route('shop.index')}}">Shop</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="newslatter-item">
+                    <!-- <div class="newslatter-item">
                         <h5>Join Our Newsletter Now</h5>
                         <p>Get E-mail updates about our latest shop and special offers.</p>
                         <form  class="subscribe-form" id="subscribe" >
@@ -89,7 +89,7 @@
                 
                             <div class="invalid-feedback">provide valid email</div>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

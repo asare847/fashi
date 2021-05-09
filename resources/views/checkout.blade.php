@@ -43,7 +43,7 @@
     <div class="alert alert-success">
         {{ session()->get('success_message') }}
     </div>
-@endif
+@endif     
 
 @if(count($errors) > 0)
     <div class="spacer"></div>
@@ -116,15 +116,18 @@
                         <div class="place-order">
                             <h4>Your Order</h4>
                             <div class="order-total">
-                                
+                                <!-- Displaying purchased items and their prices  from the cart-->
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
                                     @foreach (Cart::content() as $item)
                                     <li class="fw-normal">{{ $item->model->name }}<span>{{ $item->model->presentPrice() }}</span></li>
                                     @endforeach
-                                    <li class="fw-normal">Tax(3%) <span>{{presentPrice(Cart::tax()) }}</span></li>
-                                    <li class="fw-normal">Subtotal <span>{{ presentPrice(Cart::subtotal()) }}</span></li>
-                                    <li class="total-price">Total <span>{{ presentPrice(Cart::total()) }}</span></li>
+                                    <!-- Tax rate of the cart can be adjusted in config > cart -->
+                                    <li class="fw-normal">Tax(3%) <span>{{presentPrice($newTax) }}</span></li>
+                                    <!-- subtotal of items in the cart -->
+                                    <li class="fw-normal">Subtotal <span>{{ presentPrice($newSubtotal) }}</span></li>
+                                    <!-- sum of items in the cart -->
+                                    <li class="cart-total">Total <span>{{presentPrice($newTotal)}}</span></li>
                                 </ul>
                                 <div class="payment-check">
                                     <div class="pc-item">
@@ -157,17 +160,18 @@
    
    @endsection
    @section('extra-js')
+      <!--  Stripe integration API-->
    <script src="https://js.stripe.com/v2/"></script>
    <script src="https://js.stripe.com/v3/"></script>
    <script>    
 
-   (function () {
+ (function () {
             
     var stripe = Stripe('{{ config('services.stripe.key') }}');
     var elements = stripe.elements();
 
 // Create an instance of the card UI component
-var card = elements.create('card', {
+ var card = elements.create('card', {
     'hidePostalCode': true,
   'style': {
     'base': {
@@ -179,20 +183,20 @@ var card = elements.create('card', {
       'color': '#fa755a',
     },
   }
-});
+  });
 
 
 // Mount the UI card component into the `card-element` <div>
 card.mount('#card-element');
         
-card.addEventListener('change', function(event) {
+       card.addEventListener('change', function(event) {
               var displayError = document.getElementById('card-errors');
               if (event.error) {
                 displayError.textContent = event.error.message;
               } else {
                 displayError.textContent = '';
               }
-            });
+           });
 
         var form = document.getElementById('payment-form');
 
@@ -218,7 +222,7 @@ card.addEventListener('change', function(event) {
                   stripeTokenHandler(result.token);
                 }
               });
-            });
+          });
 
 
              function stripeTokenHandler(token) {
@@ -233,9 +237,6 @@ card.addEventListener('change', function(event) {
               // Submit the form
                          form.submit();
                     }
-
-
-
    })();
 
   </script>

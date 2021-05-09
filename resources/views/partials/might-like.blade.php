@@ -26,9 +26,9 @@
                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                            <li class="w-icon active"><a  href="javascript:;" onclick="document.getElementById('store-submit').submit()"><i class="icon_bag_alt"></i></a></li>
+                            <li class="w-icon active"><a  href="{{route('product.show',$product->slug)}}"><i class="icon_bag_alt"></i></a></li>
                             
-                            <li class="quick-view"><a href="{{ $product->path() }}">+ Quick View</a></li>
+                            <li class="quick-view"><a href="{{ route('product.show',$product->slug) }}">+ Quick View</a></li>
                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Validator;
 class CartController extends Controller
 {
@@ -16,25 +17,26 @@ class CartController extends Controller
     public function index()
     {
         $mightAlsoLike = Product::mightAlsoLike()->get();
-        return view('cart')->with('mightAlsoLike',$mightAlsoLike);
+
+        $tax = config('cart.tax')/100;
+        $discount = session()->get('coupon')['discount']??0;
+        $newSubtotal = (Cart::subtotal()-$discount);
+        $newTax = $newSubtotal * $tax;
+        $newTotal = $newSubtotal * (1+$tax);
+
+        return view('cart')->with([
+           // 'paypalToken' => $paypalToken,
+            'discount' => $discount,
+            'newSubtotal' => $newSubtotal,
+            'newTax' => $newTax,
+            'newTotal' => $newTotal,
+            'mightAlsoLike'=>$mightAlsoLike,
+        ]);
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
@@ -49,36 +51,8 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_message','Item was added to cart');
         
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        // Cart update
+   
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -101,18 +75,12 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Destrroy the cart
     public function destroy($id)
     {
         Cart::remove($id);
         return back()->with('success_message', 'Item has been removed!');
     }
 
-    public function switchToSaveForLater($id)
-    {
-        $item = Cart::get($id);
-        Cart::remove($id);
-        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
-        ->associate('App\Product');
-        return back()->with('success_message', 'Item has been saved');
-    }
+ 
 }

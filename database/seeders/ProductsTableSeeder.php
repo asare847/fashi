@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\Category;
+
 class ProductsTableSeeder extends Seeder
 {
     /**
@@ -15,8 +17,8 @@ class ProductsTableSeeder extends Seeder
     {   
         //ladies
 
-        
-
+              
+              $category_id = Category::where('id',1)->value('id');
 
             Product::create([
                 'name' => 'Hobbs Petite Tilda Wool Coat, Camel',
@@ -24,8 +26,9 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
-
+                'categories_id'=>null,
+                ]);
+ 
           
 
             Product::create([
@@ -34,15 +37,17 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
+                'categories_id'=>null,
             ]);
 
             Product::create([
-                'name' => 'AND/OR Alberta Denim Jacket, Mid Wash Blue',
+                'name' => '/AND/OR Alberta Denim Jacket, Mid Wash Blue',
                 'slug' => 'and-or-alberta-denim-jacket-mid-wash-blue',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             
             
@@ -53,7 +58,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'French Connection Wool Platform Felt Smart Coat, Utility Blue',
@@ -61,7 +67,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'John Lewis & Partners Jersey Wide Leg Trousers, Black',
@@ -69,7 +76,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'hush Mimi Puff Tee, Soft Blue',
@@ -77,7 +85,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'hush Long Sleeve Raglan T-Shirt, Khaki',
@@ -85,7 +94,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'hush Lindsey Sweatshirt, Ecru',
@@ -93,14 +103,16 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+              'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'Barbour Saltburn Hooded Quilted Jacket, Dark Navy',
                 'slug' => 'barbour-saltburn-hooded-quilted-jacket',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 149),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Forever New Olympia Collar Jumper, Earthly',
@@ -108,7 +120,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Barbour International Mayer Waterproof Jacket, Black',
@@ -116,7 +129,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
 
          
 
@@ -129,6 +143,7 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem  ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
+                'categories_id'=>null,
             ]);
       
             Product::create([
@@ -137,7 +152,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Grey Shoulder Trim Sports T-Shirt',
@@ -145,7 +161,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Disney The Lion King Nala Sleepsuit Bib and Hat Gift Set ',
@@ -153,7 +170,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Tan Hooded Longline Padded Coat ',
@@ -161,7 +179,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Red Paris Slogan Oversize Sweatshirt ',
@@ -169,7 +188,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(7999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Light Wash Seam Detail Front Tapered Jeans ',
@@ -177,7 +197,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(79, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Black Ribbed Panel Zip Neck Jumper',
@@ -185,7 +206,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Navy Floral Fleece Dressing Gown',
@@ -193,7 +215,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(79999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Grey Best Grandma Slogan Ankle Socks',
@@ -201,7 +224,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(79999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Floral Print Collared Blouse',
@@ -209,7 +233,8 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(79999, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
 
             Product::create([
                 'name' => 'Pink Star Print Pyjama Bottoms',
@@ -217,14 +242,16 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'Navy Star Print Pyjama Bottoms',
                 'slug' => 'navy-star-print-pyjama-bottoms',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
             
             Product::create([
                 'name' => 'Fenella Smith Vegan Leather Accessories Gift Set, Yellow/Green',
@@ -232,35 +259,40 @@ class ProductsTableSeeder extends Seeder
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'John Lewis & Partners Hi-Pile Fleece Snuggle Top, Grey',
                 'slug' => 'john-lewis-partners-hi-pile-fleece-snuggle-top',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'John Lewis & Partners Soft Fold Chain Leather Shoulder Bag, Grey',
                 'slug' => 'john-lewis-partners-soft-fold-chain-leather-shoulder-bag',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'Thought Kinsley Printed Shirt Dress, Vanilla Cream',
                 'slug' => 'thought-kinsley-printed-shirt-dress-vanilla-cream',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+               'categories_id'=>null,
+                ]);
             Product::create([
                 'name' => 'Kin Grayson Slip-On Flat Leather Court Shoes, Off White',
                 'slug' => 'kin-grayson-slip-on-flat-leather-court-shoes',
                 'details' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, dolorum!',
                 'price' => rand(799, 1499),
                 'description' => 'Lorem   ipsum dolor sit amet, consectetur adipisicing elit. Ipsum temporibus iusto ipsa, asperiores voluptas unde aspernatur praesentium in? Aliquam, dolore!',
-            ]);
+                'categories_id'=>null,
+                ]);
         
 
     }
