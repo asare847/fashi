@@ -9,7 +9,8 @@ composer install
 Rename or copy .env.example file to .env
 php artisan key:generate
 Set your database credentials in your .env file
-Set your Stripe credentials in your .env file. Specifically STRIPE_KEY and STRIPE_SECRET
+Set your Stripe credentials in your .env file.
+Specifically STRIPE_KEY and STRIPE_SECRET
 
 
 
