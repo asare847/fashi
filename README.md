@@ -1,4 +1,4 @@
-
+https://github.com/asare847/fashi/blob/master/public/img/fashi-img.png
 
 Website Demo: http://www.fashiecommercesite.xyz
 The demo has limited permissions. Install locally for full access.
