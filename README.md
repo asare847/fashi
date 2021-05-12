@@ -1,6 +1,7 @@
 
 
-Website Demo: http://www.fashiecommercesite.xyz/ The demo has limited permissions. Install locally for full access.
+Website Demo: http://www.fashiecommercesite.xyz
+The demo has limited permissions. Install locally for full access.
 
 Installation
 Clone the repo and cd into it
