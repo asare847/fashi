@@ -18,7 +18,7 @@ Specifically STRIPE_KEY and STRIPE_SECRET
 
 
 Shopping Cart Package
-I originally used the Crinsane/LaravelShoppingcart package but it is slow to update to the latest versions of Laravel. I now use hardevine/LaravelShoppingcart which is a forked version that updates quicker.
+ I  use hardevine/LaravelShoppingcart which is a forked version that updates quicker.
 
 Windows Users - money_format() issue
 The money_format function does not work in Windows. Take a look at this thread. As an alternative, just use the number_format function instead.
@@ -26,6 +26,12 @@ The money_format function does not work in Windows. Take a look at this thread. 
 In app/helpers.php replace money_format line with return '$'.number_format($price / 100, 2);
 In app/Product.php replace money_format line with return '$'.number_format($this->price / 100, 2);
 In config/cart.php set the thousand_seperator to an empty string or you might get a 'non well formed numeric value encountered' error. It conflicts with number_format.
+
+Testing Cards
+4242424242424242 Visa
+5555555555554444 master card
+for more information  check https://stripe.com/docs/testing
+
 
 ## License
 
