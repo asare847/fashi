@@ -27,10 +27,14 @@ In app/helpers.php replace money_format line with return '$'.number_format($pric
 In app/Product.php replace money_format line with return '$'.number_format($this->price / 100, 2);
 In config/cart.php set the thousand_seperator to an empty string or you might get a 'non well formed numeric value encountered' error. It conflicts with number_format.
 
-Testing Cards
+<p>Testing Cards
 4242424242424242 Visa
 5555555555554444 master card
-for more information  check https://stripe.com/docs/testing
+for more information  check https://stripe.com/docs/testing</p>
+
+Discount Codes
+ABC123 - £3 off
+DEF456 - 45% off
 
 
 ## License
